@@ -9,17 +9,25 @@ import {
 import './index.css'
 import App from './App.jsx'
 import Home from './pages/Home.jsx';
+import NotFound from './pages/NotFound.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />
+    element: <App />,
+    errorElement:<NotFound/>,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      }
+    ]
   },
 ]);
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} >
-    <StrictMode>
-      <App />
-    </StrictMode>,
-  </RouterProvider>
+
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>,
+
 
 )
